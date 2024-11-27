@@ -32,4 +32,3 @@ class Blog(BaseModel):
 def blog_create(request: Blog):
     print(request)
     return request
-    # return {"data": "blog is created"}
