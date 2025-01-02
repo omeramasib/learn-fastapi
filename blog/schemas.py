@@ -1,9 +1,13 @@
+from typing import List
 from pydantic import BaseModel
 
-class Blog(BaseModel):
+class BlogBase(BaseModel):
     title: str
     body: str
 
+class Blog(BlogBase):
+    class Config:
+        orm_mode = True
 
 class User(BaseModel):
     name: str
@@ -14,8 +18,7 @@ class User(BaseModel):
 class ShowUser(BaseModel):
     name: str
     email: str
-    class Config:
-        orm_mode = True
+    blogs: List[Blog] = []
 
 class ShowBlog(Blog):
     title: str
